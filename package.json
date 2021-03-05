@@ -1,0 +1,23 @@
+{
+  "name": "webpack-sandbox",
+  "version": "1.0.0",
+  "description": "Sandbox project for Webpack",
+  "main": "index.js",
+  "scripts": {
+    "webpack": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/quentinpigne/webpack-sandbox.git"
+  },
+  "author": "Quentin Pigné <quentin.pigne@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/quentinpigne/webpack-sandbox/issues"
+  },
+  "homepage": "https://github.com/quentinpigne/webpack-sandbox#readme",
+  "devDependencies": {
+    "webpack": "^5.24.3",
+    "webpack-cli": "^4.5.0"
+  }
+}
