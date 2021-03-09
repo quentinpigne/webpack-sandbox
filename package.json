@@ -4,8 +4,8 @@
   "description": "Sandbox project for Webpack",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack --mode=development --watch",
-    "build": "webpack --mode=production"
+    "dev": "webpack --env=development --watch",
+    "build": "webpack --env=production"
   },
   "repository": {
     "type": "git",
