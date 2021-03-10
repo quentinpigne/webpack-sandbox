@@ -6,8 +6,10 @@ module.exports = (env, argv) => {
     entry: './assets/js/index.js',
     output: {
       path: path.resolve(__dirname, 'dist'),
-      filename: 'bundle.js'
+      filename: 'bundle.js',
+      publicPath: "/dist/"
     },
+    devtool: env.production ? 'source-map' : 'eval-cheap-module-source-map',
     module: {
       rules: [
         {
