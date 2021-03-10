@@ -1,5 +1,17 @@
 const path = require('path')
 
+const cssLoaders = [
+  'style-loader',
+  { loader: 'css-loader', options: { importLoaders: 1 } },
+  { loader: 'postcss-loader',
+    options: {
+      postcssOptions: {
+        plugins: ['autoprefixer']
+      }
+    }
+  }
+]
+
 module.exports = (env, argv) => {
   return {
     mode: env.production ? 'production' : 'development',
@@ -19,11 +31,14 @@ module.exports = (env, argv) => {
         },
         {
           test: /\.css$/,
-          use: ['style-loader', 'css-loader']
+          use: cssLoaders
         },
         {
           test: /\.s[ac]ss$/,
-          use: ['style-loader', 'css-loader', 'sass-loader']
+          use: [
+            ...cssLoaders,
+            'sass-loader'
+          ]
         }
       ]
     }
