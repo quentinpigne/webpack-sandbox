@@ -1,4 +1,4 @@
 import log from './log'
-import '../css/style.css'
+import '../scss/style.scss'
 
 log('Hello')
