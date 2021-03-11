@@ -18,7 +18,7 @@ module.exports = (env, argv) => {
   return {
     mode: env.production ? 'production' : 'development',
     entry: {
-      app: './assets/js/index.js'
+      app: ['./assets/scss/style.scss', './assets/js/index.js']
     },
     output: {
       path: path.resolve(__dirname, 'dist'),
