@@ -1,5 +1,6 @@
 const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const { WebpackManifestPlugin } = require('webpack-manifest-plugin')
 
 const cssLoaders = [
   MiniCssExtractPlugin.loader,
@@ -16,11 +17,14 @@ const cssLoaders = [
 module.exports = (env, argv) => {
   return {
     mode: env.production ? 'production' : 'development',
-    entry: './assets/js/index.js',
+    entry: {
+      app: './assets/js/index.js'
+    },
     output: {
       path: path.resolve(__dirname, 'dist'),
-      filename: 'bundle.js',
-      publicPath: "/dist/"
+      filename: env.production ? '[name].[chunkhash:8].js' : '[name].js',
+      publicPath: "/dist/",
+      clean: true
     },
     devtool: env.production ? 'source-map' : 'eval-cheap-module-source-map',
     module: {
@@ -44,7 +48,10 @@ module.exports = (env, argv) => {
       ]
     },
     plugins: [
-      new MiniCssExtractPlugin()
+      new MiniCssExtractPlugin({
+        filename: env.production ? '[name].[contenthash:8].css' : '[name].css'
+      }),
+      new WebpackManifestPlugin()
     ]
   }
 }
