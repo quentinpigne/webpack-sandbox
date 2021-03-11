@@ -1,7 +1,8 @@
 const path = require('path')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 const cssLoaders = [
-  'style-loader',
+  MiniCssExtractPlugin.loader,
   { loader: 'css-loader', options: { importLoaders: 1 } },
   { loader: 'postcss-loader',
     options: {
@@ -41,6 +42,9 @@ module.exports = (env, argv) => {
           ]
         }
       ]
-    }
+    },
+    plugins: [
+      new MiniCssExtractPlugin()
+    ]
   }
 }
