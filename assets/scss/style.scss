@@ -2,7 +2,7 @@ $body-color: #DDD;
 $title-color: red;
 
 body {
-  background: $body-color;
+  background: $body-color url(./background.png);
   transform: translateX(20px);
 }
 
