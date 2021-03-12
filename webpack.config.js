@@ -1,4 +1,6 @@
 const path = require('path')
+
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const { WebpackManifestPlugin } = require('webpack-manifest-plugin')
 
@@ -60,6 +62,11 @@ module.exports = (env, argv) => {
       ]
     },
     plugins: [
+      new HtmlWebpackPlugin({
+        template: 'index.html',
+        inject: 'body',
+        scriptLoading: 'blocking'
+      }),
       new MiniCssExtractPlugin({
         filename: env.production ? '[name].[contenthash:8].css' : '[name].css'
       }),
