@@ -27,6 +27,11 @@ module.exports = (env, argv) => {
       clean: true
     },
     devtool: env.production ? 'source-map' : 'eval-cheap-module-source-map',
+    devServer: {
+      // contentBase: path.join(__dirname, 'dist'),
+      overlay: true,
+      port: 3000
+    },
     module: {
       rules: [
         {
