@@ -20,13 +20,16 @@ module.exports = (env, argv) => {
   return {
     mode: env.production ? 'production' : 'development',
     entry: {
-      app: ['./assets/scss/style.scss', './assets/js/index.js']
+      app: ['./public/style.scss', './src/index.js']
     },
     output: {
       path: path.resolve(__dirname, 'dist'),
       filename: env.production ? '[name].[chunkhash:8].js' : '[name].js',
       publicPath: "/dist/",
       clean: true
+    },
+    resolve: {
+      extensions: ['.wasm', '.mjs', '.js', '.jsx', '.json']
     },
     devtool: env.production ? 'source-map' : 'eval-cheap-module-source-map',
     devServer: {
@@ -37,7 +40,7 @@ module.exports = (env, argv) => {
     module: {
       rules: [
         {
-          test: /\.js$/,
+          test: /\.(js|jsx)$/,
           exclude: /node_modules/,
           use: 'babel-loader'
         },
@@ -63,7 +66,7 @@ module.exports = (env, argv) => {
     },
     plugins: [
       new HtmlWebpackPlugin({
-        template: 'index.html',
+        template: './public/index.html',
         inject: 'body',
         scriptLoading: 'blocking'
       }),
